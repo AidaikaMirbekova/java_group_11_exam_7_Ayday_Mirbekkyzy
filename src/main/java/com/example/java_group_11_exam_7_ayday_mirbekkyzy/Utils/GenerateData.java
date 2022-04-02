@@ -1,5 +1,6 @@
 package com.example.java_group_11_exam_7_ayday_mirbekkyzy.Utils;
 
+import com.example.java_group_11_exam_7_ayday_mirbekkyzy.Entity.Establishment;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Data;
@@ -45,7 +46,7 @@ public final class GenerateData {
     }
 
     public static String randomEmail() {
-        return randomPersonName() + "@" + domains.get(r.nextInt(domains.size()));
+        return randomPersonName().replaceAll(" "," ") + /*"@"+*/  domains.get(r.nextInt(domains.size()));
     }
 
     public static String randomPersonName() {

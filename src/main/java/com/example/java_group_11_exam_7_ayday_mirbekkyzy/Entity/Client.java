@@ -16,8 +16,8 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    String name=GenerateData.randomPersonName();
-    String email=GenerateData.randomEmail();
+    String name;
+    String email;
 
     public static Client random() {
         return builder()

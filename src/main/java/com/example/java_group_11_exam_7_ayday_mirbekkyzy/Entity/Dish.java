@@ -4,6 +4,7 @@ import com.example.java_group_11_exam_7_ayday_mirbekkyzy.Utils.GenerateData;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Random;
 
 @Entity
 @Table(name = "dishes")
@@ -13,6 +14,8 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Dish {
+
+    public static Random r =new Random();
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
@@ -24,12 +27,17 @@ public class Dish {
     String type;
 
     @Column(name = "price")
-    Double price;
+    Integer price;
+
+    @OneToOne
+    @JoinColumn(name = "establishment_id")
+    Establishment estabId;
 
     public static Dish random() {
         return builder()
-                .name(GenerateData.randomDish().toString())
-                .type(GenerateData.randomDish().toString())
+                .name(GenerateData.randomDish().getName())
+                .type(GenerateData.randomDish().getType())
+                .price(r.nextInt(50))
                 .build();
     }
 }

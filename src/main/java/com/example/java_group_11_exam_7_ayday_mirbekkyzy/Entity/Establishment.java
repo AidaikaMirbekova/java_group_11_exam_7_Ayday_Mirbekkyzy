@@ -23,10 +23,11 @@ public class Establishment {
     @Column(name = "description")
     String description;
 
+
     public static Establishment random() {
         return builder()
-                .name(GenerateData.randomPlace().toString())
-                .description(GenerateData.randomPlace().toString())
+                .name(GenerateData.randomPlace().getName())
+                .description(GenerateData.randomPlace().getDescription())
                 .build();
     }
 }
