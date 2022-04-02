@@ -29,7 +29,7 @@ public class Dish {
     @Column(name = "price")
     Integer price;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "establishment_id")
     Establishment estabId;
 
