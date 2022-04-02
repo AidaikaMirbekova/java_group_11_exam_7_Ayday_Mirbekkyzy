@@ -18,7 +18,7 @@ public class EstablishmentController {
         this.establishmentService = establishmentService;
     }
 
-    @GetMapping
+    @GetMapping("/showAllEstablishments")
     public Slice<EstablishmentDTO> showAllEstablishment( Pageable pageable){
         return establishmentService.showAllEstablishment(pageable);
     }
