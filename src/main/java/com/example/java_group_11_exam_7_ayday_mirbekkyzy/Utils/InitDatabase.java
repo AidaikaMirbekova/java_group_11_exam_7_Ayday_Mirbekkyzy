@@ -44,22 +44,25 @@ public class InitDatabase {
                     .collect(Collectors.toList());
             estabRepo.saveAll(establishments);
 
-            List<Dish> dishes = Stream.generate(Dish::random)
-                    .limit(38)
-                    .collect(Collectors.toList());
-            dishRepo.saveAll(dishes);
+            List<Dish> dishes = new ArrayList<>(38);
 
+            establishments.forEach(establishment -> {
+                selectEstab(establishments,+1).stream()
+                        .map(establishment1 -> Dish.random(establishment))
+                        .peek(dishes::add)
+                        .forEach(dishRepo::save);
+            });
         };
     }
 
-//    private static List<Dish> selectDishes(List<Dish> dishes, int amount) {
-//        return Stream.generate(() -> getDish(dishes))
-//                .distinct()
-//                .limit(amount)
-//                .collect(Collectors.toList());
-//    }
-//
-//    private static Dish getDish(List<Dish> dishes) {
-//        return dishes.get(rand.nextInt(dishes.size()));
-//    }
+    private static List<Establishment> selectEstab(List<Establishment> estab,int amount) {
+        return Stream.generate(() -> getEstab(estab))
+                .distinct()
+                .limit(amount)
+                .collect(Collectors.toList());
+    }
+
+    private static Establishment getEstab(List<Establishment> establishments) {
+        return establishments.get(rand.nextInt(38));
+    }
 }

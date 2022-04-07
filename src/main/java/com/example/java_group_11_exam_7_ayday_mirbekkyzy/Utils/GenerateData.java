@@ -23,11 +23,13 @@ public final class GenerateData {
     public static class DishName {
         public String type;
         public String name;
+        public Long estbId;
     }
 
     @Data
     @Builder
     public static class PlaceName {
+        public Long id;
         public String description;
         public String name;
     }
@@ -97,6 +99,7 @@ public final class GenerateData {
         return DishName.builder()
                 .type(parts[0])
                 .name(parts[1])
+                .estbId(randomPlace().getId())
                 .build();
     }
 }

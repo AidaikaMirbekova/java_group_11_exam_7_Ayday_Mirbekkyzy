@@ -2,7 +2,6 @@ package com.example.java_group_11_exam_7_ayday_mirbekkyzy.Entity;
 
 import com.example.java_group_11_exam_7_ayday_mirbekkyzy.Utils.GenerateData;
 import lombok.*;
-
 import javax.persistence.*;
 import java.util.Random;
 
@@ -14,8 +13,9 @@ import java.util.Random;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Dish {
+    private static Random r =new Random();
 
-    public static Random r =new Random();
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
@@ -31,13 +31,15 @@ public class Dish {
 
     @ManyToOne
     @JoinColumn(name = "establishment_id")
-    Establishment estabId;
+    Establishment establish;
 
-    public static Dish random() {
+    public static Dish random(Establishment establishment) {
         return builder()
                 .name(GenerateData.randomDish().getName())
                 .type(GenerateData.randomDish().getType())
                 .price(r.nextInt(50))
+                .establish(establishment)
                 .build();
     }
+
 }

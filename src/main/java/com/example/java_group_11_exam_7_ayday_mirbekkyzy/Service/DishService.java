@@ -14,7 +14,7 @@ public class DishService {
     private final DishRepository dishRepository;
 
     public Slice<DishDTO> showAllDishesByEstablId(Long estabId, Pageable pageable){
-        var allDish = dishRepository.findDishesByEstabId(estabId,pageable);
+        var allDish = dishRepository.findAllByEstablishId(estabId,pageable);
         return allDish.map(DishDTO::from);
     }
 

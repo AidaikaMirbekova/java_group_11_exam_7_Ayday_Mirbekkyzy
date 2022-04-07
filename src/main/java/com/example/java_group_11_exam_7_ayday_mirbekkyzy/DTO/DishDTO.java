@@ -14,7 +14,7 @@ public class DishDTO {
                 .id(dish.getId())
                 .name(dish.getName())
                 .type(dish.getType())
-                .establishmentId(dish.getEstabId().getId())
+                .establishmentId(dish.getEstablish().getId())
                 .price(dish.getPrice())
                 .build();
     }
@@ -24,5 +24,6 @@ public class DishDTO {
     String type;
     Long establishmentId;
     Integer price;
+
 
 }

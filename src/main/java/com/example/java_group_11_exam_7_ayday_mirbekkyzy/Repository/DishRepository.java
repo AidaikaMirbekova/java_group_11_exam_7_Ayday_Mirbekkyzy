@@ -8,7 +8,8 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 public interface DishRepository extends PagingAndSortingRepository<Dish,Long> {
 
-    Slice<Dish> findDishesByEstabId(Long estabId, Pageable pageable);
+    Slice<Dish> findAllByEstablishId(Long estabId, Pageable pageable);
+
     Dish findDishById(Long dishId);
 
 }
